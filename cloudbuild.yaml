@@ -1,0 +1,23 @@
+name: whisper-container
+description: This trigger builds the whisper Dockerfile for caption generation
+tags: ["whisper", "docker"]
+github:
+  owner: AbdoElboshy
+  name: whisper-test
+  push:
+    branch: '^master$'
+build:
+  steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args:
+        - build
+        - -t
+        - 'gcr.io/$PROJECT_ID/github.com/abdoelboshy/whisper-test:$COMMIT_SHA'
+        - .
+      dir: whisper-container
+  images:
+    - 'gcr.io/$PROJECT_ID/github.com/abdoelboshy/whisper-test:$COMMIT_SHA'
+  options:
+    logging: CLOUD_LOGGING_ONLY
+  timeout: 600s
+  serviceAccount: 467919587795-compute@developer.gserviceaccount.com
