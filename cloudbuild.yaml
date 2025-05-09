@@ -3,8 +3,8 @@ options:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/github.com/abdoelboshy/whisper-test:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/whisper-test:$COMMIT_SHA', '.']
     dir: whisper-container
 
 images:
-  - 'gcr.io/$PROJECT_ID/github.com/abdoelboshy/whisper-test:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/whisper-test:$COMMIT_SHA'
